@@ -120,6 +120,7 @@ public class PanelClients extends PanelPrincipal implements ActionListener {
 	  //remplir le type du client 
 	    this.txtTypeclient.addItem("entreprise");
 	    this.txtTypeclient.addItem("particulier");
+	    this.txtTypeclient.addActionListener(this);
 	    
 	    this.tableClients.addMouseListener(new MouseListener() {
 
@@ -205,6 +206,14 @@ public class PanelClients extends PanelPrincipal implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == this.txtTypeclient) {
+			if (this.txtTypeclient.getSelectedItem().toString().equals("particulier"))
+			{
+				this.txtSiret.setEditable(false);
+			}else {
+				this.txtSiret.setEditable(true);
+			}
+		}
 		if (e.getSource() == this.btAnnuler) {
 			this.txtNomclient.setText("");
 			this.txtAdresse.setText("");
@@ -220,11 +229,13 @@ public class PanelClients extends PanelPrincipal implements ActionListener {
 			String nomclient = this.txtNomclient.getText();
 			String adresse = this.txtAdresse.getText();
 			String ville = this.txtVille.getText();
-			int codepostal = Integer.parseInt(this.txtCodepostal.getText());			
-			int numtel = Integer.parseInt(this.txtNumtel.getText());
+			String codepostal = this.txtCodepostal.getText();			
+			String numtel = this.txtNumtel.getText();
 			String adressemail = this.txtAdressemail.getText();
 			String typeclient = this.txtTypeclient.getSelectedItem().toString();
-			int siret = Integer.parseInt(this.txtSiret.getText());
+			String siret =this.txtSiret.getText();
+			
+			
 			
 			//instanciation d'un client
 			
@@ -263,11 +274,11 @@ public class PanelClients extends PanelPrincipal implements ActionListener {
 			String nomclient = this.txtNomclient.getText();
 			String adresse = this.txtAdresse.getText();
 			String ville = this.txtVille.getText();			
-			int codepostal = Integer.parseInt(this.txtCodepostal.getText());
-			int numtel = Integer.parseInt(this.txtNumtel.getText());
+			String codepostal = this.txtCodepostal.getText();
+			String numtel = this.txtNumtel.getText();
 			String adressemail = this.txtAdressemail.getText();
 			String typeclient = this.txtTypeclient.getSelectedItem().toString();
-			int siret = Integer.parseInt(this.txtSiret.getText());
+			String siret = this.txtSiret.getText();
 			
 			int numLigne = this.tableClients.getSelectedRow();
 			int idLigne = Integer.parseInt(this.tableClients.getValueAt(numLigne, 0).toString());
@@ -279,7 +290,7 @@ public class PanelClients extends PanelPrincipal implements ActionListener {
 			Controleur.updateClient(unClient);
 			
 			//modification de la table d'affichage
-			Object ligne[] = {idLigne, nomclient, adresse, ville, codepostal, numtel, adressemail, typeclient};
+			Object ligne[] = {idLigne, nomclient, adresse, ville, codepostal, numtel, adressemail, typeclient, siret};
 			this.unTableau.modifierLigne(numLigne, ligne);
 			
 			//on vide le formulaire

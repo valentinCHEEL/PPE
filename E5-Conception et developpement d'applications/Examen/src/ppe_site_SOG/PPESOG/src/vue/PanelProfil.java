@@ -1,6 +1,7 @@
 package vue;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +37,8 @@ public class PanelProfil extends PanelPrincipal implements ActionListener {
 		super ();
 		
 		this.unUser = unUser;
+		this.txtInfos.setBackground(Color.white);
+		
 		this.txtInfos.setBounds(40, 80, 300, 200);
 		this.txtInfos.setBackground(new Color(0, 0, 130));
 		this.txtInfos.setText(
@@ -72,6 +75,13 @@ public class PanelProfil extends PanelPrincipal implements ActionListener {
 		//rendre les boutons ecoutables
 		this.btAnnuler.addActionListener(this);
 		this.btEnregistrer.addActionListener(this);
+		Component[] components = this.panelForm.getComponents();
+	    Color textColor = Color.WHITE;
+	    for (Component component : components) {
+	        if (component instanceof JLabel) {
+	            component.setForeground(textColor);
+	        }
+	    }
 		
 	}
 

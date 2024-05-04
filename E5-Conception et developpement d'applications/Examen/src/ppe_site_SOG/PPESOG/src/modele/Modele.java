@@ -119,11 +119,11 @@ public static ArrayList<Client> selectAllClients (String filtre){
 		Statement unStat = uneBdd.getMaconnexion().createStatement();
 		ResultSet desRes = unStat.executeQuery(requete);
 		while (desRes.next()) {
-			Client unClient = new Client (desRes.getInt("numclient"),
-					desRes.getString("nomclient"), desRes.getString("adresse"),
-					desRes.getString("ville"), desRes.getInt("codepostal"),
-					desRes.getInt("numtel"), desRes.getString("adressemail"), 
-					desRes.getString("typeclient"),desRes.getInt("siret"));
+			Client unClient = new Client (desRes.getInt("numClient"),
+					desRes.getString("nomClient"), desRes.getString("adresse"),
+					desRes.getString("ville"), desRes.getString("codePostal"),
+					desRes.getString("numTel"), desRes.getString("adressemail"), 
+					desRes.getString("typeClient"),desRes.getString("siret"));
 			lesClients.add(unClient);
 		}
 		unStat.close();
@@ -131,7 +131,7 @@ public static ArrayList<Client> selectAllClients (String filtre){
 	}
 	catch (SQLException exp) {
 		System.out.println("Erreur de requete : "+ requete);
-		
+		exp.printStackTrace();
 	}
 	
 	return lesClients;
@@ -150,11 +150,11 @@ public static Client selectWhereClient (int numClient) {
 					desRes.getString("nomclient"),
 					desRes.getString("adresse"), 
 					desRes.getString("ville"),
-					desRes.getInt("codepostal"),
-					desRes.getInt("numtel"),
+					desRes.getString("codepostal"),
+					desRes.getString("numtel"),
 					desRes.getString("adressemail"),
 					desRes.getString("typeclient"),
-					desRes.getInt("siret"));
+					desRes.getString("siret"));
 		}
 		unStat.close();
 		uneBdd.seDeConnecter();
@@ -179,11 +179,11 @@ public static Client selectWhereClient (String nomclient, String adressemail) {
 					desRes.getString("nomclient"),
 					desRes.getString("adresse"), 
 					desRes.getString("ville"),
-					desRes.getInt("codepostal"),
-					desRes.getInt("numtel"),
+					desRes.getString("codepostal"),
+					desRes.getString("numtel"),
 					desRes.getString("adressemail"),
 					desRes.getString("typeclient"),
-					desRes.getInt("siret"));
+					desRes.getString("siret"));
 		}
 		unStat.close();
 		uneBdd.seDeConnecter();

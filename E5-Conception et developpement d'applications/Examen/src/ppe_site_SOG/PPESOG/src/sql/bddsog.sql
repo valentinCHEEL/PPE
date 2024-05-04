@@ -8,24 +8,24 @@ use sog;
         nomClient varchar(30),
         adresse varchar (50),
         ville varchar (30),
-        codePostal char(5),
-        numTel char(12) unique,
+        codePostal varchar(5),
+        numTel varchar(12) unique,
         adressemail varchar (50) unique,
         passwordc varchar(100),
         typeClient ENUM('Entreprise', 'Particulier') NOT NULL,
-        siret varchar (14),
+        siret bigint (14),
         primary key(numClient)
 );
 
     
     CREATE TABLE Entreprise (
     numClient INT(5) auto_increment NOT NULL,
-    siret VARCHAR(14),
+    siret bigint(14),
     nomEntreprise varchar(100),
     adresse varchar (50),
     ville varchar (30),
-    codePostal char(5),
-    numTel char(10),
+    codePostal varchar(5),
+    numTel varchar(10),
     adressemail varchar (50),
     passwordc varchar(100),
     PRIMARY KEY (numClient)
@@ -38,8 +38,8 @@ use sog;
          prenom VARCHAR(50) NOT NULL,
         adresse varchar (50),
         ville varchar (30),
-        codePostal char(5),
-        numTel char(10),
+        codePostal varchar(5),
+        numTel varchar(10),
         adressemail varchar (50),
         passwordc varchar(100) not null,
         PRIMARY KEY (numClient)

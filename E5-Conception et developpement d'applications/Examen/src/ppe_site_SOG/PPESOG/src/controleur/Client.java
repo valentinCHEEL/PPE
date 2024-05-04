@@ -2,10 +2,10 @@ package controleur;
 
 public class Client {
 	private int numclient;
-	private String nomclient, adresse, ville, adressemail,password,typeclient;
-	int numtel, codepostal, siret;
+	private String nomclient, adresse, ville, codepostal, numtel, adressemail, password, typeclient, siret;
 	
-	public Client(int numclient, String nomclient, String adresse, String ville, int codepostal, int numtel, String adressemail, String typeclient, int siret) 
+	
+	public Client(int numclient, String nomclient, String adresse, String ville, String codepostal, String numtel, String adressemail, String typeclient, String siret) 
 	{
 		this.numclient = numclient;
 		this.nomclient = nomclient;
@@ -19,7 +19,7 @@ public class Client {
 		this.siret = siret;
 	}
 	
-	public Client ( String nomclient, String adresse , String ville, int codepostal, int numtel, String adressemail, String typeclient, int siret) 
+	public Client ( String nomclient, String adresse , String ville, String codepostal, String numtel, String adressemail, String typeclient, String siret) 
 	{
 		this.numclient = 0;
 		this.nomclient = nomclient;
@@ -30,6 +30,7 @@ public class Client {
 		this.adressemail = adressemail;
 		this.password = password;
 		this.typeclient = typeclient;
+		this.siret = siret;
 	}
 
 	public int getNumclient() {
@@ -64,19 +65,19 @@ public class Client {
 		this.ville = ville;
 	}
 
-	public int getCodepostal() {
+	public String getCodepostal() {
 		return codepostal;
 	}
 
-	public void setCodepostal(int codepostal) {
+	public void setCodepostal(String codepostal) {
 		this.codepostal = codepostal;
 	}
 
-	public int getNumtel() {
+	public String getNumtel() {
 		return numtel;
 	}
 
-	public void setNumtem(int numtel) {
+	public void setNumtem(String numtel) {
 		this.numtel = numtel;
 	}
 
@@ -103,11 +104,11 @@ public class Client {
 	public void setTypeClient(String typeclient) {
 		this.typeclient = typeclient;
 	}
-	public int getSiret() {
+	public String getSiret() {
 		return siret;
 	}
 
-	public void setSiret(int siret) {
+	public void setSiret(String siret) {
 		this.siret = siret;
 	}
 	
