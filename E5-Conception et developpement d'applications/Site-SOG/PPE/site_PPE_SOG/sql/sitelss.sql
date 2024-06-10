@@ -45,9 +45,9 @@ use sog;
 
     create table Contrat (
         numContrat int(5) not null auto_increment,
-        dateFin date,
+        dateFin datetime,
         /* dateV = date limite ou de validitÃ© */
-        dateV date,
+        dateV datetime,
         /* montantMHt = montant mensuel ht */
         montantMHt decimal (10,3),
         numClient int(3) not null,
@@ -83,20 +83,6 @@ use sog;
     delimiter ;
 
 
-    -- pour hashe ke mdp en sha1 lors de l'insertion
-    /*
-    drop trigger if exists insertClient;
-    delimiter //
-    CREATE TRIGGER insertClient
-    BEFORE INSERT ON client
-    FOR EACH ROW
-    BEGIN
-        set new.passwordc = concat(sha1(passwordc));
-    END//
-    delimiter ;
-
-    */
-
     --connexion pour le client lourd
 CREATE TABLE user (
     iduser INT(3) AUTO_INCREMENT PRIMARY KEY,
@@ -109,8 +95,8 @@ CREATE TABLE user (
 
 /* pour se connecter a l'appli java */
 insert into user values 
-    (null, "Kilian","Schaar", "a@gmail.com", "123", "admin"),
-    (null, "Valentin", "Cheel", "b@gmail.com", "456", "user");
+    (null, "Valentin","Cheel", "a@gmail.com", "123", "admin"),
+    (null, "Kilian", "Shaar", "b@gmail.com", "456", "user");
 
 /* a voir c un test*/
 insert into technicien values 
@@ -123,7 +109,7 @@ insert into technicien values
     (null, "Glenn", "Parcker","non", 10, "1234!AZERTYaze");
 
 insert into technicien values 
-    (null, "Proust", "Christinaprout","non", 10, "1234!AZERTYaze");
+    (null, "Doctor", "Who","non", 10, "1234!AZERTYaze");
 
 /* insertion de client*/
 insert into client values
@@ -144,6 +130,7 @@ insert into intervention values
 (null," 2023-06-10 10:10:00", null, null, "terminer", "Ipad", 1, 1);
 
 
+
 insert into intervention values
 (null," 2024-06-10 03:17:45", null, null, null, "mac", 1, 2);
 
@@ -152,6 +139,9 @@ insert into intervention values
 
 insert into intervention values
 (null," 2023-06-10 17:15:00", null, null, "terminer", "Ipad", 1, 2);
+
+insert into intervention values
+(null," 2023-06-10 17:15:00", "2023-06-10 17:15:00", "2023-06-10 17:15:00", "terminer", "Ipad", 1, 2);
 
 update intervention
 set etat ="terminer"
